@@ -1,0 +1,21 @@
+name: Auto Push
+
+on:
+  schedule:
+    - cron: '0 0,4,8,12,16,20 * * *' # Horaires pour les pushs (toutes les 4 heures)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Push changes
+      run: |
+        git config --global user.name 'crackers'
+        git config --global user.email 'alfred.ternynck@epitech.eu'
+        git add .
+        git commit -m "Automated push"
+        git push
