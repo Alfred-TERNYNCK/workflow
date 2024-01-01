@@ -14,7 +14,7 @@ jobs:
 
     - name: Push changes
       run: |
-        git config --global user.name 'crackers'
+        git config --global user.name 'ALFRED-TERNYNCK'
         git config --global user.email 'alfred.ternynck@epitech.eu'
         git add .
         git commit -m "Automated push"
