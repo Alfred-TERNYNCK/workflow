@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x] # Spécifiez la version de Node.js que vous souhaitez utiliser
+        node-version: [16.16.0] # Spécifiez la version de Node.js que vous souhaitez utiliser
 
     steps:
     - name: Utiliser Node.js ${{ matrix.node-version }}
