@@ -18,6 +18,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    - name: Créer un fichier vide
+      run: |
+        touch new_file.txt
+        echo "Fichier vide créé pour le push automatique" > new_file.txt
+
     - name: Checkout du code
       uses: actions/checkout@v2
 
