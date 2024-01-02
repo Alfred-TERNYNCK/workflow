@@ -1,0 +1,24 @@
+name: Auto-push toutes les 4 heures
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+
+jobs:
+  auto-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2
+
+    - name: Configuration de l'utilisateur Git
+      run: |
+        git config --global user.name "ALFRED-TERNYNCK"
+        git config --global user.email "ternynckalfred@gmail.com"
+
+    - name: Commit et push
+      run: |
+        git add -A
+        git commit -m "Auto-push toutes les 4 heures"
+        git push
