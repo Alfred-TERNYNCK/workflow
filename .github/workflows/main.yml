@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Vérifier le répertoire actuel
+      run: pwd  # Affiche le répertoire de travail actuel
+
+    - name: Définir le répertoire de travail
+      run: cd $GITHUB_WORKSPACE
+      shell: bash
+
     - name: Créer un fichier vide
       run: |
         touch new_file.txt
