@@ -12,6 +12,12 @@ jobs:
     - name: Vérifier le répertoire actuel
       run: pwd  # Affiche le répertoire de travail actuel
 
+    - name: Afficher le contenu du répertoire
+      run: ls -al  # Affiche le contenu du répertoire de travail
+
+    - name: Afficher les informations sur l'environnement
+      run: env  # Affiche les variables d'environnement
+
     - name: Définir le répertoire de travail
       run: cd $GITHUB_WORKSPACE
       shell: bash
@@ -21,10 +27,16 @@ jobs:
         touch new_file.txt
         echo "Fichier vide créé pour le push automatique" > new_file.txt
 
+    - name: Afficher le contenu du répertoire après la création du fichier
+      run: ls -al
+
     - name: Configuration de l'utilisateur Git
       run: |
         git config --global user.name "ALFRED-TERNYNCK"
         git config --global user.email "ternynckalfred@gmail.com"
+
+    - name: Afficher l'état de la configuration Git
+      run: git config --list
 
     - name: Commit et push du fichier vide
       run: |
