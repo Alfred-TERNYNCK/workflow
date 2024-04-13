@@ -25,7 +25,7 @@ jobs:
       run: git config --list
 
     - name: Cloner le référentiel GitHub
-      run: git clone https://github.com/Alfred-TERNYNCK/git@github.com:Alfred-TERNYNCK/workflow.git test_clone
+      run: git clone https://github.com/Alfred-TERNYNCK/https://github.com/Alfred-TERNYNCK/workflow.git test_clone
       # Remplacez YOUR_USERNAME et YOUR_REPOSITORY par votre nom d'utilisateur GitHub et le nom de votre référentiel
 
     - name: Afficher le contenu du répertoire cloné
