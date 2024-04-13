@@ -1,32 +1,39 @@
-name: Test de connexion GitHub
+name: Auto-push de fichier toutes les 2 heures
 
 on:
-  push:
-    branches:
-      - main  # Déclencher le workflow sur les pushes vers la branche principale
+  schedule:
+    - cron: "0 */2 * * *"
 
 jobs:
-  test-connexion:
+  auto-push:
     runs-on: ubuntu-latest
 
     steps:
     - name: Vérifier le répertoire actuel
       run: pwd  # Affiche le répertoire de travail actuel
 
-    - name: Afficher les informations sur l'environnement
-      run: env  # Affiche les variables d'environnement
-
     - name: Configuration de l'utilisateur Git
       run: |
         git config --global user.name "Alfred-TERNYNCK"
         git config --global user.email "ternynckalfred@gmail.com"
 
-    - name: Afficher l'état de la configuration Git
-      run: git config --list
+    - name: Créer un fichier vide avec un horodatage
+      run: |
+        echo "Fichier vide créé le $(date)" > new_file.txt
 
-    - name: Cloner le référentiel GitHub
-      run: git clone https://github.com/Alfred-TERNYNCK/workflow.git test_clone
-      # Remplacez YOUR_USERNAME et YOUR_REPOSITORY par votre nom d'utilisateur GitHub et le nom de votre référentiel
+    - name: Commit du nouveau fichier
+      run: |
+        git add new_file.txt
+        git commit -m "Ajout d'un fichier avec horodatage"
+        git push
 
-    - name: Afficher le contenu du répertoire cloné
-      run: ls -al test_clone
+    - name: Supprimer le fichier précédent (s'il existe)
+      run: |
+        if [ -f old_file.txt ]; then
+          git rm old_file.txt
+          git commit -m "Suppression du fichier précédent"
+          git push
+        fi
+
+    - name: Renommer le fichier créé pour le prochain cycle
+      run: mv new_file.txt old_file.txt
