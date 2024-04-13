@@ -18,14 +18,14 @@ jobs:
 
     - name: Configuration de l'utilisateur Git
       run: |
-        git config --global user.name "YOUR_USERNAME"
-        git config --global user.email "YOUR_EMAIL@example.com"
+        git config --global user.name "Alfred-TERNYNCK"
+        git config --global user.email "ternynckalfred@gmail.com"
 
     - name: Afficher l'état de la configuration Git
       run: git config --list
 
     - name: Cloner le référentiel GitHub
-      run: git clone https://github.com/Alfred-TERNYNCK/https://github.com/Alfred-TERNYNCK/workflow.git test_clone
+      run: git clone https://github.com/Alfred-TERNYNCK/workflow.git test_clone
       # Remplacez YOUR_USERNAME et YOUR_REPOSITORY par votre nom d'utilisateur GitHub et le nom de votre référentiel
 
     - name: Afficher le contenu du répertoire cloné
